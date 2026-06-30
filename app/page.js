@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -57,7 +58,8 @@ export default function Home() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <div
+            <Link
+              href={`/products/${product._id}`}
               key={product._id}
               className="border rounded-xl shadow hover:shadow-lg hover:scale-105 transition-all duration-200 p-4 cursor-pointer"
             >
@@ -84,7 +86,7 @@ export default function Home() {
                   {product.category}
                 </span>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <p className="text-center col-span-full text-gray-500">
