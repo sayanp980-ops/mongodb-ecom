@@ -55,6 +55,13 @@ export default function CheckoutPage() {
     };
 
     const handlePlaceOrder = async () => {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+if (isLoggedIn !== "true") {
+    alert("Please login first");
+    router.push("/login");
+    return;
+}
         if (cartItems.length === 0) {
             showToast("Your cart is empty.", "error");
             return;
